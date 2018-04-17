@@ -17,33 +17,62 @@
         }
         return result;
       }
+      //Allows imperfect entry like rOcK and sCISSorS or rock
       function flattenEntry(string){
         return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
       }
+      //Gameplay and beyond
+      let playerScore = 0;
+      let computerScore = 0;
+      function scoreReset(){
+        playerScore = 0;
+        computerScore = 0;
+      }
+      function game(){
+
       function playRound(playerSelection, computerSelection){
         playerSelection = flattenEntry(prompt("Rock, Paper, or Scissors?"));
         computerSelection = computerPlay();
         console.log("You: " + playerSelection + ", Computer: " + computerSelection);
+
         if(playerSelection === computerSelection){
           console.log("It's a tie!");
         } else if(playerSelection == "Rock" && computerSelection == "Scissors"){
           console.log("You win with Rock");
+          playerScore ++;
         } else if(playerSelection == "Scissors" && computerSelection == "Rock"){
-          console.log("You lose with Scissors :( )");
+          console.log("You fall victim to the people's elbow and IT DOESN'T MATTER");
+          computerScore ++;
         } else if(playerSelection == "Paper" && computerSelection == "Rock"){
           console.log("You win with Paper!");
+          playerScore ++;
         } else if(playerSelection == "Paper" && computerSelection == "Scissors"){
           console.log("You lose with Paper");
+          computerScore ++;
         } else if(playerSelection == "Scissors" && computerSelection == "Paper"){
           console.log("you win with Scissors!");
+          playerScore ++;
         } else if (playerSelection == "Rock" && computerSelection == "Paper"){
           console.log("You lose with Rock");
+          computerScore ++;
         } else if(playerSelection == "Dynamite"){
           console.log("Hahaha, no.");
+          computerScore += 2;
+          playerScore = 0;
         } else {
           console.log("You need to enter either rock, paper, or scissors");
         }
       }
+      playRound();
+      console.log("Score: You " + playerScore + " | " + "Computer " + computerScore);
+      if(playerScore == 5){
+        alert("You win!");
+        scoreReset();
+      } else if(computerScore >= 5){
+        alert("You lose!")
+        scoreReset();
+      }
+    }
 
   </script>
 </body>
