@@ -4,52 +4,46 @@
   <title>Paper Scissors Rock</title>
   </head>
   <body>
-    <input name="Age?" class="numberInput" type="text">
-    <p></p>
-  <script>
-
-  let age = prompt("What is your age?", 18);
-  console.log(age);
-
-//FUNCTIONS MAN
-let doStuff = function() {
-  if(age <= 15){
-console.log("you too young");
-} else {
-  console.log("you old man");
-}
-// alert("can you even func");
-}
-
-doStuff(age);
-//end function
-
-// Write a function called add7 that takes one number and returns that number + 7.
-function add7(number) {
-  return number+7;
-}
-// Write a function called multiply that takes 2 numbers and returns their product.
-function multiply(x,y){
-  return x*y;
-}
-// Write a function called capitalize that takes a string and returns that string with only the first letter capitalized. Make sure that it can take strings that are lowercase, UPPERCASE or BoTh.
-function capitalize(string){
-  let first = string.charAt(0).toUpperCase();
-  let rest = string.substring(1);
-  let whole = first.concat(rest);
-return whole;
-}
-//the single line version which i should've thought of
-function capitalise(string){
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
-// Write a function called lastLetter that takes a string and returns the very last letter of that string:
-// lastLetter("abcd") should return "d"
-function lastLetter(str){
-  return str.slice(str.length-1);
-}
-
-
+    <script>
+      function computerPlay(){
+        let int = Math.floor(Math.random() * 3);
+        let result;
+        if(int == 0){
+          result = "Rock";
+        }  else if (int == 1){
+          result = "Paper";
+        } else {
+          result = "Scissors";
+        }
+        return result;
+      }
+      function flattenEntry(string){
+        return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+      }
+      function playRound(playerSelection, computerSelection){
+        playerSelection = flattenEntry(prompt("Rock, Paper, or Scissors?"));
+        computerSelection = computerPlay();
+        console.log("You: " + playerSelection + ", Computer: " + computerSelection);
+        if(playerSelection === computerSelection){
+          console.log("It's a tie!");
+        } else if(playerSelection == "Rock" && computerSelection == "Scissors"){
+          console.log("You win with Rock");
+        } else if(playerSelection == "Scissors" && computerSelection == "Rock"){
+          console.log("You lose with Scissors :( )");
+        } else if(playerSelection == "Paper" && computerSelection == "Rock"){
+          console.log("You win with Paper!");
+        } else if(playerSelection == "Paper" && computerSelection == "Scissors"){
+          console.log("You lose with Paper");
+        } else if(playerSelection == "Scissors" && computerSelection == "Paper"){
+          console.log("you win with Scissors!");
+        } else if (playerSelection == "Rock" && computerSelection == "Paper"){
+          console.log("You lose with Rock");
+        } else if(playerSelection == "Dynamite"){
+          console.log("Hahaha, no.");
+        } else {
+          console.log("You need to enter either rock, paper, or scissors");
+        }
+      }
 
   </script>
 </body>
