@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Paper Scissors Rock</title>
+  </head>
+  <body>
+      <div id="what"></div> <!-- this bit just chillin for shit to be appendChild'd to it -->
+
+      <button id="rock">Rock</button>
+      <button id="scissor">Scissors</button>
+      <button id="paper">Paper</button>
+
+    <script>
+      function computerPlay(){
+                let int = Math.floor(Math.random() * 3);
+                let result;
+                if(int == 0){
+                    result = "Rock";
+                }  else if (int == 1){
+                    result = "Paper";
+                } else {
+                    result = "Scissors";
+                }
+                return result;
+            }
+      //Allows imperfect entry like rOcK and sCISSorS or rock - not used for UI version
+    //   function flattenEntry(string){
+    //     return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+    //   }
+      //////////
+
+
+      //Gameplay and beyond
+let playerScore = 0;
+let computerScore = 0;
+
+function scoreReset(){
+    playerScore = 0;
+    computerScore = 0;
+    }
+
+    //   let playerSelection = flattenEntry(prompt("Rock, Paper, or Scissors?"));
+    function chooseRock(){
+        let comp = computerPlay();
+        playRound("Rock", comp);
+    }
+    function choosePaper(){
+        let comp = computerPlay();
+        playRound("Paper", comp);    
+        }
+    function chooseScissors(){
+        let comp = computerPlay();
+        playRound("Scissors", comp);   
+    }
+
+      /////////
+    const rockButt = document.querySelector('#rock');
+    const paperButt = document.querySelector('#paper');
+    const scissorButt = document.querySelector('#scissor');
+
+rockButt.addEventListener('click', chooseRock);
+paperButt.addEventListener('click', choosePaper);
+scissorButt.addEventListener('click', chooseScissors);
+
+
+////////Don't use this, too confusin' 
+    // const butt = document.createElement('button');
+    // butt.innerText = "Rock";
+    // butt.setAttribute('id', 'rock');
+    // what.appendChild(butt);
+
+
+    // butt.addEventListener('click',);
+   const what = document.querySelector('#what');
+   const score = document.createElement('h3');
+   what.appendChild(score);
+
+   const result = document.createElement('h1');
+   what.appendChild(result);
+
+   const winner = document.createElement('p')
+   what.appendChild(winner);
+
+
+   score.textContent = "Score: You " + playerScore + " | " + "Computer " + computerScore;    
+    result.textContent = "Click a button to begin!";
+    winner.textContent = "$2 per game";
+      ///////
+            function playRound(playerSelection, computerSelection){
+                    console.log("You: " + playerSelection + ", Computer: " + computerSelection);
+                        result.textContent = "You: " + playerSelection + ", Computer: " + computerSelection;
+                    if(playerSelection === computerSelection){
+                    console.log("It's a tie!");
+                        winner.textContent = "It's a tie!";
+                    } else if(playerSelection == "Rock" && computerSelection == "Scissors"){
+                    console.log("You win with Rock");
+                        winner.textContent = "You win with Rock";
+                    playerScore ++;
+                    } else if(playerSelection == "Scissors" && computerSelection == "Rock"){
+                    console.log("You fall victim to the people's elbow and IT DOESN'T MATTER");
+                        winner.textContent = "You fall victim to the people's elbow and IT DOESN'T MATTER";
+                    computerScore ++;
+                    } else if(playerSelection == "Paper" && computerSelection == "Rock"){
+                    console.log("You win with Paper!");
+                        winner.textContent = "You win with Paper!";
+                    playerScore ++;
+                    } else if(playerSelection == "Paper" && computerSelection == "Scissors"){
+                    console.log("You lose with Paper");
+                        winner.textContent = "You lose with Paper";
+                    computerScore ++;
+                    } else if(playerSelection == "Scissors" && computerSelection == "Paper"){
+                    console.log("you win with Scissors!");
+                        winner.textContent = "you win with scissors";
+                    playerScore ++;
+                    } else if (playerSelection == "Rock" && computerSelection == "Paper"){
+                    console.log("You lose with Rock");
+                        winner.textContent = "You lose with Rock";
+                    computerScore ++;
+                    } else if(playerSelection == "Dynamite"){
+                    console.log("Hahaha, no.");
+                        winner.textContent = "Hahahahaha, nope.";
+                    computerScore += 2;
+                    playerScore = 0;
+                    } else {
+                    console.log("You need to enter either rock, paper, or scissors");
+                    }
+                
+              score.textContent = "Score: You " + playerScore + " | " + "Computer " + computerScore;
+             console.log("Score: You " + playerScore + " | " + "Computer " + computerScore);
+
+            }
+      
+    //   if(playerScore == 5){
+    //     alert("You win!");
+    //     scoreReset();
+    //   } else if(computerScore >= 5){
+    //     alert("You lose!")
+    //     scoreReset();
+    //   }
+    
+    
+    
+    
+
+
+  </script>
+</body>
+</html>
