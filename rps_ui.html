@@ -9,6 +9,7 @@
       <button id="rock">Rock</button>
       <button id="scissor">Scissors</button>
       <button id="paper">Paper</button>
+      <button id="dynamite">Dynamite</button>
 
     <script>
       function computerPlay(){
@@ -52,16 +53,21 @@ function scoreReset(){
         let comp = computerPlay();
         playRound("Scissors", comp);   
     }
+    function chooseDyn(){
+        let comp = computerPlay();
+        playRound("Dynamite", comp);
+    }
 
       /////////
     const rockButt = document.querySelector('#rock');
     const paperButt = document.querySelector('#paper');
     const scissorButt = document.querySelector('#scissor');
+    const dynButt = document.querySelector('#dynamite');
 
 rockButt.addEventListener('click', chooseRock);
 paperButt.addEventListener('click', choosePaper);
 scissorButt.addEventListener('click', chooseScissors);
-
+dynButt.addEventListener('click', chooseDyn);
 
 ////////Don't use this, too confusin' 
     // const butt = document.createElement('button');
@@ -118,7 +124,7 @@ scissorButt.addEventListener('click', chooseScissors);
                     computerScore ++;
                     } else if(playerSelection == "Dynamite"){
                     console.log("Hahaha, no.");
-                        winner.textContent = "Hahahahaha, nope.";
+                        winner.textContent = "Illegal move, go back to start.";
                     computerScore += 2;
                     playerScore = 0;
                     } else {
