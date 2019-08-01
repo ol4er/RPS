@@ -10,6 +10,7 @@
       <button id="scissor">Scissors</button>
       <button id="paper">Paper</button>
       <button id="dynamite">Dynamite</button>
+      <div id="hey"></div>
 
     <script>
       function computerPlay(){
@@ -84,10 +85,11 @@ dynButt.addEventListener('click', chooseDyn);
    const result = document.createElement('h1');
    what.appendChild(result);
 
-   const winner = document.createElement('p')
+   const winner = document.createElement('p');
    what.appendChild(winner);
 
-
+   const alert = document.createElement('h1');
+    hey.appendChild(alert);
    score.textContent = "Score: You " + playerScore + " | " + "Computer " + computerScore;    
     result.textContent = "Click a button to begin!";
     winner.textContent = "$2 per game";
@@ -134,16 +136,23 @@ dynButt.addEventListener('click', chooseDyn);
               score.textContent = "Score: You " + playerScore + " | " + "Computer " + computerScore;
              console.log("Score: You " + playerScore + " | " + "Computer " + computerScore);
 
-            }
+            
       
-    //   if(playerScore == 5){
-    //     alert("You win!");
-    //     scoreReset();
-    //   } else if(computerScore >= 5){
-    //     alert("You lose!")
-    //     scoreReset();
-    //   }
-    
+      if(playerScore == 5){
+        alert.textContent = "You win!";
+        alert.setAttribute('style', 'color:green');
+
+        scoreReset();
+      } else if(computerScore >= 5){
+        alert.textContent = "You lose!";
+        alert.setAttribute('style', 'color:red');
+
+        scoreReset();
+      }
+      else if(computerScore < 5 && playerScore < 5){
+          alert.textContent = "";
+      }
+            }
     
     
     
